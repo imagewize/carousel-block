@@ -9,7 +9,7 @@
   "attributes": {
     "slidesToShow": {
       "type": "number",
-      "default": 1
+      "default": 3
     },
     "slidesToScroll": {
       "type": "number",
@@ -21,7 +21,7 @@
     },
     "dots": {
       "type": "boolean",
-      "default": false
+      "default": true
     },
     "infinite": {
       "type": "boolean",
@@ -42,6 +42,18 @@
     "rtl": {
       "type": "boolean",
       "default": false
+    },
+    "responsiveWidth": {
+      "type": "number",
+      "default": 768
+    },
+    "responsiveSlides": {
+      "type": "number",
+      "default": 1
+    },
+    "responsiveSlidesToScroll": {
+      "type": "number",
+      "default": 1
     }
   },
   "supports": {
