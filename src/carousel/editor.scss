@@ -1,0 +1,75 @@
+.cb-carousel-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1em;
+    min-height: 200px;
+    text-align: center;
+    background: #f0f0f0;
+}
+
+.wp-block-cb-carousel {
+    display: block;
+    visibility: visible !important;
+    position: relative;
+
+    > .block-editor-inner-blocks > .block-editor-block-list__layout {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        overflow-y: hidden;
+        padding: 2px;
+        margin: 0 -7.5px;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        -webkit-overflow-scrolling: touch;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+
+        > * {
+            margin: 0 !important;
+        }
+
+        .wp-block-cb-slide {
+            flex: 0 0 100%;
+            max-width: 100%;
+            padding: 0 7.5px;
+            scroll-snap-align: start;
+        }
+    }
+
+    &.is-selected .block-editor-inner-blocks,
+    &.has-child-selected .block-editor-inner-blocks {
+        .block-editor-block-list__layout {
+            overflow-x: visible;
+        }
+    }
+}
+
+// Responsive slide counts
+@media (min-width: 600px) {
+    @for $i from 2 through 10 {
+        .cb-shows-#{$i}-slides .block-editor-inner-blocks > .block-editor-block-list__layout .wp-block-cb-slide {
+            $margin: 15px;
+            $width: calc((100% - ($margin * ($i - 1))) / #{$i});
+            flex: 0 0 $width;
+            max-width: $width;
+        }
+    }
+}
+
+// Editor controls
+.cb-carousel-controls {
+    margin-bottom: 1em;
+
+    .components-base-control {
+        margin-bottom: 8px;
+    }
+
+    .components-toggle-control {
+        margin-bottom: 16px;
+    }
+}
