@@ -5,7 +5,7 @@
   "version": "1.0.0",
   "title": "Carousel",
   "category": "design",
-  "description": "A customizable carousel block.",
+  "description": "Create a customizable slideshow of content with this carousel block.",
   "attributes": {
     "slidesToShow": {
       "type": "number",
