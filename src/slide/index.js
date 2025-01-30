@@ -2,8 +2,6 @@ import { registerBlockType } from '@wordpress/blocks';
 import { useBlockProps, InnerBlocks } from '@wordpress/block-editor';
 import { useSelect } from '@wordpress/data';
 
-import './editor.scss';
-
 const SlideIcon = (
     <svg
         width="24"

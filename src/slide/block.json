@@ -13,6 +13,5 @@
     "html": false
   },
   "textdomain": "carousel-block",
-  "editorScript": "file:./index.js",
-  "editorStyle": "file:./editor.scss"
+  "editorScript": "file:./index.js"
 }
