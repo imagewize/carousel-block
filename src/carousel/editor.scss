@@ -14,8 +14,9 @@
     position: relative;
 
     > .block-editor-inner-blocks > .block-editor-block-list__layout {
-        display: flex;
-        flex-wrap: nowrap;
+        display: flex !important; // Force flex display
+        flex-wrap: nowrap !important;
+        gap: 15px;
         overflow-x: auto;
         overflow-y: hidden;
         padding: 2px;
@@ -34,9 +35,9 @@
         }
 
         .wp-block-cb-slide {
-            flex: 0 0 100%;
-            max-width: 100%;
-            padding: 0 7.5px;
+            flex: 0 0 calc(100% / var(--slides-to-show, 1));
+            max-width: calc(100% / var(--slides-to-show, 1));
+            padding: 0;
             scroll-snap-align: start;
         }
     }

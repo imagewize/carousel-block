@@ -5,6 +5,7 @@ import { __ } from '@wordpress/i18n';
 import { Fragment } from '@wordpress/element';
 import { useSelect } from '@wordpress/data';
 import classnames from 'classnames';
+import save from './save';
 
 import './editor.scss';
 
@@ -74,18 +75,5 @@ registerBlockType('cb/carousel', {
             </Fragment>
         );
     },
-    save: function Save({ attributes }) {
-        // Save implementation
-        const blockProps = useBlockProps.save({
-            className: classnames({ 'cb-single-slide': slidesToShow == 1 }),
-            'data-slick': JSON.stringify(slickSettings),
-            dir: rtl ? 'rtl' : undefined,
-        });
-
-        return (
-            <div {...blockProps}>
-                <InnerBlocks.Content />
-            </div>
-        );
-    },
+    save
 });
