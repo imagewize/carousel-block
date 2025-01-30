@@ -66,7 +66,7 @@
   },
   "textdomain": "carousel-block",
   "editorScript": "file:./index.js",
-  "editorStyle": "file:./editor.css",
+  "editorStyle": "file:./index.css",
   "style": "file:./style.css",
   "viewScript": "file:./view.js"
 }
