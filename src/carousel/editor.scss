@@ -99,6 +99,11 @@
     &.cb-show-scrollbar > .block-editor-inner-blocks > .block-editor-block-list__layout {
         overflow-x: auto !important;
         padding-bottom: 15px;
+        scrollbar-width: auto;
+        -ms-overflow-style: auto;
+        &::-webkit-scrollbar {
+            display: block;
+        }
     }
 
     &.alignfull > .block-editor-inner-blocks > .block-editor-block-list__layout {
