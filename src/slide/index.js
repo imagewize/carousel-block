@@ -1,6 +1,10 @@
 import { registerBlockType } from '@wordpress/blocks';
-import { useBlockProps, InnerBlocks } from '@wordpress/block-editor';
+import { useBlockProps, InnerBlocks, InspectorControls } from '@wordpress/block-editor';
+import { PanelBody, TextControl } from '@wordpress/components';
+import { __ } from '@wordpress/i18n';
+import { Fragment } from '@wordpress/element';
 import { useSelect } from '@wordpress/data';
+import Save from './save';
 
 const SlideIcon = (
     <svg
@@ -20,8 +24,16 @@ const SlideIcon = (
 
 registerBlockType('cb/slide', {
     icon: SlideIcon,
-    edit: function Edit({ clientId }) {
+    attributes: {
+        slideId: {
+            type: 'string',
+            default: ''
+        }
+    },
+    edit: function Edit({ attributes, setAttributes, clientId }) {
+        const { slideId } = attributes;
         const blockProps = useBlockProps();
+
         const { hasChildBlocks } = useSelect((select) => {
             const { getBlockOrder } = select('core/block-editor');
             return {
@@ -30,22 +42,27 @@ registerBlockType('cb/slide', {
         }, [clientId]);
 
         return (
-            <div {...blockProps}>
-                <InnerBlocks
-                    templateLock={false}
-                    renderAppender={
-                        !hasChildBlocks ? InnerBlocks.ButtonBlockAppender : undefined
-                    }
-                />
-            </div>
+            <Fragment>
+                <InspectorControls>
+                    <PanelBody title={__('Slide Settings', 'cb')} initialOpen={true}>
+                        <TextControl
+                            label={__('Slide ID', 'cb')}
+                            value={slideId}
+                            onChange={(value) => setAttributes({ slideId: value })}
+                            help={__('Optional HTML ID for this slide', 'cb')}
+                        />
+                    </PanelBody>
+                </InspectorControls>
+                <div {...blockProps}>
+                    <InnerBlocks
+                        templateLock={false}
+                        renderAppender={
+                            !hasChildBlocks ? InnerBlocks.ButtonBlockAppender : undefined
+                        }
+                    />
+                </div>
+            </Fragment>
         );
     },
-    save: function Save() {
-        const blockProps = useBlockProps.save();
-        return (
-            <div {...blockProps}>
-                <InnerBlocks.Content />
-            </div>
-        );
-    },
+    save: Save,
 });
