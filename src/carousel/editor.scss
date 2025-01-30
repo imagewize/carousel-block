@@ -128,10 +128,14 @@
     margin-bottom: 1em;
 
     .components-base-control {
-        margin-bottom: 8px;
+        margin-bottom: 16px;
     }
 
     .components-toggle-control {
         margin-bottom: 16px;
+    }
+
+    .components-text-control__input {
+        margin-bottom: 8px;
     }
 }

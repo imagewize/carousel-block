@@ -50,6 +50,7 @@ registerBlockType('cb/slide', {
                             value={slideId}
                             onChange={(value) => setAttributes({ slideId: value })}
                             help={__('Optional HTML ID for this slide', 'cb')}
+                            __nextHasNoMarginBottom={true}
                         />
                     </PanelBody>
                 </InspectorControls>
