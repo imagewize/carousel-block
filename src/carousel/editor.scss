@@ -28,10 +28,57 @@
 
         &::-webkit-scrollbar {
             display: none;
+            -webkit-appearance: none;
+            background-color: rgba(0, 0, 0, 0.15);
+            height: 12px;
+            
+            &-thumb {
+                background-color: rgba(0, 0, 0, 0.38);
+                border-radius: 0;
+                
+                &:hover {
+                    background-color: rgba(0, 0, 0, 0.48);
+                }
+            }
         }
 
         > * {
             margin: 0 !important;
+        }
+
+        > [data-type="cb/slide"] {
+            margin: 0 !important;
+            .block-editor-block-list__layout,
+            .block-editor-inner-blocks {
+                height: 100%;
+            }
+            
+            > .block-editor-inner-blocks > .block-editor-block-list__layout {
+                > :first-child:not(.block-list-appender) {
+                    margin-top: 0;
+                }
+                > :last-child:not(.block-list-appender) {
+                    margin-bottom: 0;
+                }
+            }
+        }
+
+        > .block-list-appender {
+            align-self: flex-start !important;
+            list-style: none !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            position: static !important;
+            z-index: 2;
+            margin-left: 32px !important;
+
+            .components-button svg {
+                margin: 0 !important;
+            }
+        }
+
+        .wp-block {
+            max-width: inherit;
         }
 
         .wp-block-cb-slide {
@@ -48,16 +95,30 @@
             overflow-x: visible;
         }
     }
+
+    &.cb-show-scrollbar > .block-editor-inner-blocks > .block-editor-block-list__layout {
+        overflow-x: auto !important;
+        padding-bottom: 15px;
+    }
+
+    &.alignfull > .block-editor-inner-blocks > .block-editor-block-list__layout {
+        padding-left: 0;
+    }
+}
+
+.is-vertical .wp-block-cb-carousel .block-list-appender {
+    width: auto !important;
 }
 
 // Responsive slide counts
 @media (min-width: 600px) {
     @for $i from 2 through 10 {
         .cb-shows-#{$i}-slides .block-editor-inner-blocks > .block-editor-block-list__layout .wp-block-cb-slide {
-            $margin: 15px;
-            $width: calc((100% - ($margin * ($i - 1))) / #{$i});
-            flex: 0 0 $width;
-            max-width: $width;
+            $gap: 32px;
+            $width: calc((100% - ($gap * ($i - 1))) / #{$i});
+            flex-basis: $width !important;
+            max-width: $width !important;
+            min-width: $width !important;
         }
     }
 }
