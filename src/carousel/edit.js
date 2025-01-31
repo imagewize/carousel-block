@@ -23,6 +23,9 @@ export default function Edit({ attributes, setAttributes, clientId }) {
         responsiveWidth,
         responsiveSlides,
         responsiveSlidesToScroll,
+        slides,
+        scrollGroup,
+        slidePadding,
     } = attributes;
 
     const slideCount = useSelect(
@@ -32,6 +35,8 @@ export default function Edit({ attributes, setAttributes, clientId }) {
     const blockProps = useBlockProps({
         className: classnames(
             `cb-shows-${slidesToShow}-slides`,
+            `cb-responsive-${responsiveSlides}-slides`,
+            { 'cb-padding': slidePadding },
             slideCount + 1 > slidesToShow ? 'cb-show-scrollbar' : 'cb-hide-scrollbar'
         ),
     });
@@ -102,6 +107,23 @@ export default function Edit({ attributes, setAttributes, clientId }) {
                         label={__('RTL Mode', 'cb')}
                         checked={rtl}
                         onChange={(value) => setAttributes({ rtl: value })}
+                    />
+                    <RangeControl
+                        label={__('Total Slides', 'cb')}
+                        value={slides}
+                        onChange={(value) => setAttributes({ slides: value })}
+                        min={1}
+                        max={20}
+                    />
+                    <ToggleControl
+                        label={__('Enable Scroll Group', 'cb')}
+                        checked={scrollGroup}
+                        onChange={(value) => setAttributes({ scrollGroup: value })}
+                    />
+                    <ToggleControl
+                        label={__('Enable Slide Padding', 'cb')}
+                        checked={slidePadding}
+                        onChange={(value) => setAttributes({ slidePadding: value })}
                     />
                 </PanelBody>
                 <PanelBody title={__('Responsive Settings', 'cb')} initialOpen={false}>
