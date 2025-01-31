@@ -6,6 +6,8 @@
  */
  
  .wp-block-cb-carousel {
+    position: relative;
+
     .slick-slide {
         overflow: hidden;
         padding-left: 7.5px;
@@ -13,23 +15,73 @@
     }
 
     .slick-dots {
+        bottom: -25px;
+
         li {
+            margin: 0 4px;
+
             button {
+                width: 12px;
+                height: 12px;
+                padding: 0;
+                border: 2px solid #000;
+                border-radius: 50%;
+                background: transparent;
+
+                &::before {
+                    display: none;
+                }
+
                 &:not(:hover):not(:active) {
                     background-color: transparent;
                 }
+
+                &:hover {
+                    background: rgba(0, 0, 0, 0.5);
+                }
+            }
+
+            &.slick-active button {
+                background: #000;
             }
         }
     }
 
     .slick-next,
     .slick-prev {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 40px;
+        height: 40px;
+        cursor: pointer;
+        z-index: 1;
+        border: none;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.8);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
         &:not(:hover):not(:active) {
             background-color: transparent;
         }
+
+        &:hover {
+            background: rgba(255, 255, 255, 1);
+        }
+
         &::before {
             color: #000;
+            font-size: 20px;
+            opacity: 0.75;
         }
+    }
+
+    .slick-prev {
+        left: -20px;
+    }
+
+    .slick-next {
+        right: -20px;
     }
 
     &.alignfull {
