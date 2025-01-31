@@ -37,7 +37,7 @@
     },
     "speed": {
       "type": "number",
-      "default": 500
+      "default": 300
     },
     "rtl": {
       "type": "boolean",
@@ -54,6 +54,18 @@
     "responsiveSlidesToScroll": {
       "type": "number",
       "default": 1
+    },
+    "slides": {
+      "type": "number",
+      "default": 4
+    },
+    "scrollGroup": {
+      "type": "boolean",
+      "default": false
+    },
+    "slidePadding": {
+      "type": "boolean",
+      "default": true
     }
   },
   "supports": {
