@@ -51,14 +51,21 @@ class Carousel_Slider_Block {
      */
     public static function render_carousel( $attributes, $content ) {
         if ( ! is_admin() ) {
-			wp_enqueue_style(
+            wp_enqueue_style(
                 'carousel-block-slick-style',
                 plugins_url( '/vendor/slick/slick.min.css', __FILE__ ),
                 [],
                 self::VERSION,
                 false
             );
-             wp_enqueue_script(
+            wp_enqueue_style(
+                'carousel-block-style',
+                plugins_url( '/build/style-index.css', __FILE__ ),
+                [],
+                self::VERSION,
+                false
+            );
+            wp_enqueue_script(
                 'carousel-block-slick-script',
                 plugins_url( '/vendor/slick/slick.min.js', __FILE__ ),
                 ['jquery'],
