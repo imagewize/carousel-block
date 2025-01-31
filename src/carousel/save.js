@@ -1,4 +1,5 @@
 import { useBlockProps, InnerBlocks } from '@wordpress/block-editor';
+import classnames from 'classnames';
 
 export default function save({ attributes }) {
     const {
@@ -10,7 +11,12 @@ export default function save({ attributes }) {
         autoplay,
         autoplaySpeed,
         speed,
-        rtl
+        rtl,
+        responsiveWidth,
+        responsiveSlides,
+        responsiveSlidesToScroll,
+        slidePadding,
+        scrollGroup
     } = attributes;
 
     const slickSettings = {
@@ -21,11 +27,23 @@ export default function save({ attributes }) {
         infinite,
         autoplay,
         autoplaySpeed: parseInt(autoplaySpeed),
-        speed: parseInt(speed)
+        speed: parseInt(speed),
+        rtl,
+        responsive: [{
+            breakpoint: parseInt(responsiveWidth) + 1,
+            settings: {
+                slidesToShow: parseInt(responsiveSlides),
+                slidesToScroll: parseInt(responsiveSlidesToScroll)
+            }
+        }]
     };
 
     const blockProps = useBlockProps.save({
-        className: 'slick-slider',
+        className: classnames(
+            'slick-slider',
+            { 'cb-single-slide': slidesToShow === 1 },
+            { 'cb-padding': slidePadding }
+        ),
         'data-slick': JSON.stringify(slickSettings),
         dir: rtl ? 'rtl' : undefined
     });
