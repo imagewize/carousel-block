@@ -54,6 +54,15 @@ npm run lint:js
 npm run lint:css
 ```
 
+## Important Notes
+
+### Experimental Features
+This plugin uses experimental features from WordPress core:
+- `__experimentalColorGradientSettingsDropdown`
+- `__experimentalUseMultipleOriginColorsAndGradients`
+
+These features might change or be removed in future WordPress versions, which could require updates to maintain compatibility.
+
 ## Requirements
 
 - WordPress 6.1+

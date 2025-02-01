@@ -42,6 +42,13 @@ export default function save({ attributes }) {
         }]
     };
 
+    const getColorValue = (color) => {
+        if (color?.slug) {
+            return `var(--wp--preset--color--${color.slug})`;
+        }
+        return color?.color || color;
+    };
+
     const blockProps = useBlockProps.save({
         className: classnames(
             'slick-slider',
@@ -49,10 +56,10 @@ export default function save({ attributes }) {
             { 'cb-padding': slidePadding }
         ),
         'data-slick': JSON.stringify(slickSettings),
-        'data-arrow-color': arrowColor,
-        'data-arrow-background': arrowBackground,
-        'data-arrow-hover-color': arrowHoverColor,
-        'data-arrow-hover-background': arrowHoverBackground,
+        'data-arrow-color': getColorValue(arrowColor),
+        'data-arrow-background': getColorValue(arrowBackground),
+        'data-arrow-hover-color': getColorValue(arrowHoverColor),
+        'data-arrow-hover-background': getColorValue(arrowHoverBackground),
         dir: rtl ? 'rtl' : undefined
     });
 

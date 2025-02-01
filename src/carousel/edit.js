@@ -1,4 +1,12 @@
-import { useBlockProps, InnerBlocks, InspectorControls, withColors, ColorPalette } from '@wordpress/block-editor';
+import {
+    useBlockProps,
+    InnerBlocks,
+    InspectorControls,
+    withColors,
+    // WARNING: Using experimental features that might change in future WordPress versions
+    __experimentalColorGradientSettingsDropdown as ColorGradientSettingsDropdown,
+    __experimentalUseMultipleOriginColorsAndGradients as useMultipleOriginColorsAndGradients
+} from '@wordpress/block-editor';
 import { PanelBody, RangeControl, ToggleControl, Button, Dropdown, ColorPicker } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 import { Fragment } from '@wordpress/element';
@@ -11,14 +19,35 @@ import './editor.scss';
 
 const ALLOWED_BLOCKS = ['cb/slide'];
 
+/**
+ * Edit component for the Carousel Block
+ * 
+ * Note: This component uses experimental WordPress features:
+ * - __experimentalColorGradientSettingsDropdown
+ * - __experimentalUseMultipleOriginColorsAndGradients
+ * These features might change or be removed in future WordPress versions.
+ */
 const Edit = compose(
+    withColors('arrowColor', 'arrowBackground', 'arrowHoverColor', 'arrowHoverBackground'),
     withSelect((select) => {
         const settings = select('core/block-editor').getSettings();
         return {
             colors: settings.colors || [],
         };
     })
-)(function({ attributes, setAttributes, clientId, colors }) {
+)(function({ 
+    attributes, 
+    setAttributes, 
+    clientId,
+    arrowColor,
+    setArrowColor,
+    arrowBackground,
+    setArrowBackground,
+    arrowHoverColor,
+    setArrowHoverColor,
+    arrowHoverBackground,
+    setArrowHoverBackground
+}) {
     const {
         slidesToShow,
         slidesToScroll,
@@ -35,10 +64,10 @@ const Edit = compose(
         slides,
         scrollGroup,
         slidePadding,
-        arrowColor,
-        arrowBackground,
-        arrowHoverColor,
-        arrowHoverBackground,
+        arrowColor: arrowColorAttr,
+        arrowBackground: arrowBackgroundAttr,
+        arrowHoverColor: arrowHoverColorAttr,
+        arrowHoverBackground: arrowHoverBackgroundAttr,
     } = attributes;
 
     const slideCount = useSelect(
@@ -60,52 +89,62 @@ const Edit = compose(
         </div>
     );
 
-    const ColorPickerButton = ({ label, value, onChange }) => {
-        const currentColor = value || attributes[`default${label.replace(/\s+/g, '')}`];
-        
-        return (
-            <div className="block-editor-tools-panel-color-gradient-settings__item">
-                <Dropdown
-                    renderToggle={({ isOpen, onToggle }) => (
-                        <Button
-                            onClick={onToggle}
-                            aria-expanded={isOpen}
-                            className="block-editor-panel-color-gradient-settings__dropdown"
-                            style={{ 
-                                '--wp-admin-theme-color': currentColor 
-                            }}
-                        >
-                            <span className="block-editor-panel-color-gradient-settings__dropdown-text">{label}</span>
-                            <span 
-                                className="block-editor-panel-color-gradient-settings__dropdown-swatch" 
-                            />
-                        </Button>
-                    )}
-                    renderContent={() => (
-                        <div className="components-color-picker__popover">
-                            <div className="components-color-picker__theme-colors">
-                                <ColorPalette
-                                    colors={colors}
-                                    value={currentColor}
-                                    onChange={onChange}
-                                />
-                            </div>
-                            <div className="components-color-picker__custom-picker">
-                                <ColorPicker
-                                    color={currentColor}
-                                    onChange={onChange}
-                                    enableAlpha
-                                />
-                            </div>
-                        </div>
-                    )}
-                />
-            </div>
-        );
+    const colorGradientSettings = useMultipleOriginColorsAndGradients();
+
+    const onArrowColorChange = (color) => {
+        setArrowColor(color);
+        setAttributes({ arrowColor: color });
+    };
+
+    const onArrowBackgroundChange = (color) => {
+        setArrowBackground(color);
+        setAttributes({ arrowBackground: color });
+    };
+
+    const onArrowHoverColorChange = (color) => {
+        setArrowHoverColor(color);
+        setAttributes({ arrowHoverColor: color });
+    };
+
+    const onArrowHoverBackgroundChange = (color) => {
+        setArrowHoverBackground(color);
+        setAttributes({ arrowHoverBackground: color });
     };
 
     return (
         <Fragment>
+            <InspectorControls group="color">
+                {arrows && (
+                    <>
+                        <ColorGradientSettingsDropdown
+                            panelId={clientId}
+                            settings={[
+                                {
+                                    label: __('Arrow Color', 'cb'),
+                                    colorValue: arrowColor?.color || arrowColorAttr,
+                                    onColorChange: onArrowColorChange
+                                },
+                                {
+                                    label: __('Arrow Background', 'cb'),
+                                    colorValue: arrowBackground?.color || arrowBackgroundAttr,
+                                    onColorChange: onArrowBackgroundChange
+                                },
+                                {
+                                    label: __('Arrow Hover Color', 'cb'),
+                                    colorValue: arrowHoverColor?.color || arrowHoverColorAttr,
+                                    onColorChange: onArrowHoverColorChange
+                                },
+                                {
+                                    label: __('Arrow Hover Background', 'cb'),
+                                    colorValue: arrowHoverBackground?.color || arrowHoverBackgroundAttr,
+                                    onColorChange: onArrowHoverBackgroundChange
+                                }
+                            ]}
+                            {...colorGradientSettings}
+                        />
+                    </>
+                )}
+            </InspectorControls>
             <InspectorControls>
                 <PanelBody title={__('Carousel Settings', 'cb')} initialOpen={true}>
                     <RangeControl
@@ -135,30 +174,6 @@ const Edit = compose(
                         checked={arrows}
                         onChange={(value) => setAttributes({ arrows: value })}
                     />
-                    {arrows && (
-                        <>
-                            <ColorPickerButton
-                                label={__('Arrow Color', 'cb')}
-                                value={arrowColor}
-                                onChange={(value) => setAttributes({ arrowColor: value })}
-                            />
-                            <ColorPickerButton
-                                label={__('Arrow Background', 'cb')}
-                                value={arrowBackground}
-                                onChange={(value) => setAttributes({ arrowBackground: value })}
-                            />
-                            <ColorPickerButton
-                                label={__('Arrow Hover Color', 'cb')}
-                                value={arrowHoverColor}
-                                onChange={(value) => setAttributes({ arrowHoverColor: value })}
-                            />
-                            <ColorPickerButton
-                                label={__('Arrow Hover Background', 'cb')}
-                                value={arrowHoverBackground}
-                                onChange={(value) => setAttributes({ arrowHoverBackground: value })}
-                            />
-                        </>
-                    )}
                     <ToggleControl
                         label={__('Show Dots', 'cb')}
                         checked={dots}
