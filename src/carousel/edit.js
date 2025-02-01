@@ -60,43 +60,49 @@ const Edit = compose(
         </div>
     );
 
-    const ColorPickerButton = ({ label, value, onChange }) => (
-        <div className="block-editor-tools-panel-color-gradient-settings__item">
-            <Dropdown
-                renderToggle={({ isOpen, onToggle }) => (
-                    <Button
-                        onClick={onToggle}
-                        aria-expanded={isOpen}
-                        className="block-editor-panel-color-gradient-settings__dropdown"
-                    >
-                        <span className="block-editor-panel-color-gradient-settings__dropdown-text">{label}</span>
-                        <span 
-                            className="block-editor-panel-color-gradient-settings__dropdown-swatch" 
-                            style={{ backgroundColor: value || 'transparent' }}
-                        />
-                    </Button>
-                )}
-                renderContent={() => (
-                    <div className="components-color-picker__popover">
-                        <div className="components-color-picker__theme-colors">
-                            <ColorPalette
-                                colors={colors}
-                                value={value}
-                                onChange={onChange}
+    const ColorPickerButton = ({ label, value, onChange }) => {
+        const currentColor = value || attributes[`default${label.replace(/\s+/g, '')}`];
+        
+        return (
+            <div className="block-editor-tools-panel-color-gradient-settings__item">
+                <Dropdown
+                    renderToggle={({ isOpen, onToggle }) => (
+                        <Button
+                            onClick={onToggle}
+                            aria-expanded={isOpen}
+                            className="block-editor-panel-color-gradient-settings__dropdown"
+                            style={{ 
+                                '--wp-admin-theme-color': currentColor 
+                            }}
+                        >
+                            <span className="block-editor-panel-color-gradient-settings__dropdown-text">{label}</span>
+                            <span 
+                                className="block-editor-panel-color-gradient-settings__dropdown-swatch" 
                             />
+                        </Button>
+                    )}
+                    renderContent={() => (
+                        <div className="components-color-picker__popover">
+                            <div className="components-color-picker__theme-colors">
+                                <ColorPalette
+                                    colors={colors}
+                                    value={currentColor}
+                                    onChange={onChange}
+                                />
+                            </div>
+                            <div className="components-color-picker__custom-picker">
+                                <ColorPicker
+                                    color={currentColor}
+                                    onChange={onChange}
+                                    enableAlpha
+                                />
+                            </div>
                         </div>
-                        <div className="components-color-picker__custom-picker">
-                            <ColorPicker
-                                color={value}
-                                onChange={onChange}
-                                enableAlpha
-                            />
-                        </div>
-                    </div>
-                )}
-            />
-        </div>
-    );
+                    )}
+                />
+            </div>
+        );
+    };
 
     return (
         <Fragment>

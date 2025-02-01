@@ -164,3 +164,58 @@
         margin-top: 16px;
     }
 }
+
+// Style the color buttons group
+.block-editor-tools-panel-color-gradient-settings__item {
+    .block-editor-panel-color-gradient-settings__dropdown {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #757575;
+        border-radius: 2px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+
+        &:hover {
+            border-color: #000;
+            color: #1e1e1e;
+        }
+        
+        .block-editor-panel-color-gradient-settings__dropdown-text {
+            flex-grow: 1;
+            text-align: left;
+            font-size: 13px;
+        }
+        
+        .block-editor-panel-color-gradient-settings__dropdown-swatch {
+            width: 28px;
+            height: 28px;
+            min-width: 28px;
+            border-radius: 50%;
+            border: 1px solid #ddd;
+            background: var(--wp-admin-theme-color);
+            position: relative;
+            overflow: hidden;
+
+            &::after {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: currentColor;
+                border-radius: inherit;
+            }
+        }
+    }
+
+    // Add margin after the last color button before the next control
+    &:last-of-type {
+        margin-bottom: 24px;
+    }
+
+    &:not(:first-child) {
+        margin-top: 8px;
+    }
+}
