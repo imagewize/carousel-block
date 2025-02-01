@@ -6,7 +6,7 @@
     $(document).ready(function() {
         $('.wp-block-cb-carousel').each(function() {
             const $slider = $(this);
-            // Apply CSS variables for arrows dots
+            // Apply CSS variables for arrows and navigation dots
             $slider.css({
                 '--arrow-color': $slider.data('arrow-color'),
                 '--arrow-background': $slider.data('arrow-background'),
