@@ -157,17 +157,29 @@
     align-items: center;
     width: 100%;
     margin: 8px 0;
-    padding: 6px 12px;
+    // Remove the padding as components-button has its own
+    height: 36px;
     
-    .components-color-picker__label {
-        flex-grow: 1;
-    }
-    
-    .components-color-picker__swatch {
-        width: 24px;
-        height: 24px;
-        border-radius: 50%;
-        border: 1px solid #ddd;
+    // Extend WordPress button styles
+    &.components-button {
+        border: 1px solid #757575;
+        
+        &:hover {
+            border-color: #000;
+        }
+        
+        .components-color-picker__label {
+            flex-grow: 1;
+            text-align: left;
+        }
+        
+        .components-color-picker__swatch {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            border: 1px solid #ddd;
+            margin-left: 8px;
+        }
     }
 }
 

@@ -67,7 +67,7 @@ const Edit = compose(
                     <Button
                         onClick={onToggle}
                         aria-expanded={isOpen}
-                        className="components-color-picker__button"
+                        className="components-button components-color-picker__button"
                     >
                         <span className="components-color-picker__label">{label}</span>
                         <span 
