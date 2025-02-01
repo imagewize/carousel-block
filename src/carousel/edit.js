@@ -1,5 +1,5 @@
 import { useBlockProps, InnerBlocks, InspectorControls, withColors } from '@wordpress/block-editor';
-import { PanelBody, RangeControl, ToggleControl, ColorPalette } from '@wordpress/components';
+import { PanelBody, RangeControl, ToggleControl, Button, Dropdown, ColorPicker } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 import { Fragment } from '@wordpress/element';
 import { useSelect } from '@wordpress/data';
@@ -60,6 +60,33 @@ const Edit = compose(
         </div>
     );
 
+    const ColorPickerButton = ({ label, value, onChange }) => (
+        <div className="components-base-control">
+            <Dropdown
+                renderToggle={({ isOpen, onToggle }) => (
+                    <Button
+                        onClick={onToggle}
+                        aria-expanded={isOpen}
+                        className="components-color-picker__button"
+                    >
+                        <span className="components-color-picker__label">{label}</span>
+                        <span 
+                            className="components-color-picker__swatch" 
+                            style={{ backgroundColor: value || 'transparent' }}
+                        />
+                    </Button>
+                )}
+                renderContent={() => (
+                    <ColorPicker
+                        color={value}
+                        onChange={onChange}
+                        enableAlpha
+                    />
+                )}
+            />
+        </div>
+    );
+
     return (
         <Fragment>
             <InspectorControls>
@@ -93,46 +120,26 @@ const Edit = compose(
                     />
                     {arrows && (
                         <>
-                            <div className="components-base-control">
-                                <label className="components-base-control__label">
-                                    {__('Arrow Color', 'cb')}
-                                </label>
-                                <ColorPalette
-                                    colors={colors}
-                                    value={arrowColor}
-                                    onChange={(value) => setAttributes({ arrowColor: value })}
-                                />
-                            </div>
-                            <div className="components-base-control">
-                                <label className="components-base-control__label">
-                                    {__('Arrow Background', 'cb')}
-                                </label>
-                                <ColorPalette
-                                    colors={colors}
-                                    value={arrowBackground}
-                                    onChange={(value) => setAttributes({ arrowBackground: value })}
-                                />
-                            </div>
-                            <div className="components-base-control">
-                                <label className="components-base-control__label">
-                                    {__('Arrow Hover Color', 'cb')}
-                                </label>
-                                <ColorPalette
-                                    colors={colors}
-                                    value={arrowHoverColor}
-                                    onChange={(value) => setAttributes({ arrowHoverColor: value })}
-                                />
-                            </div>
-                            <div className="components-base-control">
-                                <label className="components-base-control__label">
-                                    {__('Arrow Hover Background', 'cb')}
-                                </label>
-                                <ColorPalette
-                                    colors={colors}
-                                    value={arrowHoverBackground}
-                                    onChange={(value) => setAttributes({ arrowHoverBackground: value })}
-                                />
-                            </div>
+                            <ColorPickerButton
+                                label={__('Arrow Color', 'cb')}
+                                value={arrowColor}
+                                onChange={(value) => setAttributes({ arrowColor: value })}
+                            />
+                            <ColorPickerButton
+                                label={__('Arrow Background', 'cb')}
+                                value={arrowBackground}
+                                onChange={(value) => setAttributes({ arrowBackground: value })}
+                            />
+                            <ColorPickerButton
+                                label={__('Arrow Hover Color', 'cb')}
+                                value={arrowHoverColor}
+                                onChange={(value) => setAttributes({ arrowHoverColor: value })}
+                            />
+                            <ColorPickerButton
+                                label={__('Arrow Hover Background', 'cb')}
+                                value={arrowHoverBackground}
+                                onChange={(value) => setAttributes({ arrowHoverBackground: value })}
+                            />
                         </>
                     )}
                     <ToggleControl
