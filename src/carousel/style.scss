@@ -15,7 +15,7 @@
     }
 
     .slick-dots {
-        bottom: -25px;
+        bottom: var(--dots-bottom, -35px);
 
         li {
             margin: 0 4px;
