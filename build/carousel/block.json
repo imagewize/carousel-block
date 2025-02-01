@@ -66,6 +66,22 @@
     "slidePadding": {
       "type": "boolean",
       "default": true
+    },
+    "arrowColor": {
+      "type": "string",
+      "default": "#000000"
+    },
+    "arrowBackground": {
+      "type": "string",
+      "default": "#ffffff"
+    },
+    "arrowHoverColor": {
+      "type": "string",
+      "default": "#000000"
+    },
+    "arrowHoverBackground": {
+      "type": "string",
+      "default": "#ffffff"
     }
   },
   "supports": {
