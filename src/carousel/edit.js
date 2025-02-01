@@ -61,17 +61,17 @@ const Edit = compose(
     );
 
     const ColorPickerButton = ({ label, value, onChange }) => (
-        <div className="components-base-control">
+        <div className="block-editor-tools-panel-color-gradient-settings__item">
             <Dropdown
                 renderToggle={({ isOpen, onToggle }) => (
                     <Button
                         onClick={onToggle}
                         aria-expanded={isOpen}
-                        className="components-button components-color-picker__button"
+                        className="block-editor-panel-color-gradient-settings__dropdown"
                     >
-                        <span className="components-color-picker__label">{label}</span>
+                        <span className="block-editor-panel-color-gradient-settings__dropdown-text">{label}</span>
                         <span 
-                            className="components-color-picker__swatch" 
+                            className="block-editor-panel-color-gradient-settings__dropdown-swatch" 
                             style={{ backgroundColor: value || 'transparent' }}
                         />
                     </Button>
