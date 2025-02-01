@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: Slick Carousel Block
+ * Plugin Name: Creative Carousel Block
  * Plugin URI: https://github.com/imagewize/carousel-block
  * Description: A responsive carousel slider block for Gutenberg. Add any blocks to slides.
  * Author URI: https://imagewize.com
