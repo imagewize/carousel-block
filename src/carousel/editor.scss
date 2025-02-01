@@ -150,3 +150,22 @@
         margin-bottom: 8px;
     }
 }
+
+// Add styles for experimental color settings
+.block-editor-panel-color-gradient-settings {
+    .components-dropdown {
+        width: 100%;
+        margin-bottom: 8px;
+    }
+
+    .components-dropdown-menu__toggle {
+        width: 100%;
+        justify-content: space-between;
+        padding: 6px 12px;
+        
+        .components-dropdown-menu__toggle-text {
+            flex-grow: 1;
+            text-align: left;
+        }
+    }
+}

@@ -1,15 +1,53 @@
-import { useBlockProps, InnerBlocks, InspectorControls } from '@wordpress/block-editor';
-import { PanelBody, RangeControl, ToggleControl } from '@wordpress/components';
+import {
+    useBlockProps,
+    InnerBlocks,
+    InspectorControls,
+    withColors,
+    // WARNING: Using experimental features that might change in future WordPress versions
+    __experimentalColorGradientSettingsDropdown as ColorGradientSettingsDropdown,
+    __experimentalUseMultipleOriginColorsAndGradients as useMultipleOriginColorsAndGradients
+} from '@wordpress/block-editor';
+import { PanelBody, RangeControl, ToggleControl, Button, Dropdown, ColorPicker } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 import { Fragment } from '@wordpress/element';
 import { useSelect } from '@wordpress/data';
 import classnames from 'classnames';
+import { compose } from '@wordpress/compose';
+import { withSelect } from '@wordpress/data';
 
 import './editor.scss';
 
 const ALLOWED_BLOCKS = ['cb/slide'];
 
-export default function Edit({ attributes, setAttributes, clientId }) {
+/**
+ * Edit component for the Carousel Block
+ * 
+ * Note: This component uses experimental WordPress features:
+ * - __experimentalColorGradientSettingsDropdown
+ * - __experimentalUseMultipleOriginColorsAndGradients
+ * These features might change or be removed in future WordPress versions.
+ */
+const Edit = compose(
+    withColors('arrowColor', 'arrowBackground', 'arrowHoverColor', 'arrowHoverBackground'),
+    withSelect((select) => {
+        const settings = select('core/block-editor').getSettings();
+        return {
+            colors: settings.colors || [],
+        };
+    })
+)(function({ 
+    attributes, 
+    setAttributes, 
+    clientId,
+    arrowColor,
+    setArrowColor,
+    arrowBackground,
+    setArrowBackground,
+    arrowHoverColor,
+    setArrowHoverColor,
+    arrowHoverBackground,
+    setArrowHoverBackground
+}) {
     const {
         slidesToShow,
         slidesToScroll,
@@ -26,6 +64,10 @@ export default function Edit({ attributes, setAttributes, clientId }) {
         slides,
         scrollGroup,
         slidePadding,
+        arrowColor: arrowColorAttr,
+        arrowBackground: arrowBackgroundAttr,
+        arrowHoverColor: arrowHoverColorAttr,
+        arrowHoverBackground: arrowHoverBackgroundAttr,
     } = attributes;
 
     const slideCount = useSelect(
@@ -47,8 +89,62 @@ export default function Edit({ attributes, setAttributes, clientId }) {
         </div>
     );
 
+    const colorGradientSettings = useMultipleOriginColorsAndGradients();
+
+    const onArrowColorChange = (color) => {
+        setArrowColor(color);
+        setAttributes({ arrowColor: color });
+    };
+
+    const onArrowBackgroundChange = (color) => {
+        setArrowBackground(color);
+        setAttributes({ arrowBackground: color });
+    };
+
+    const onArrowHoverColorChange = (color) => {
+        setArrowHoverColor(color);
+        setAttributes({ arrowHoverColor: color });
+    };
+
+    const onArrowHoverBackgroundChange = (color) => {
+        setArrowHoverBackground(color);
+        setAttributes({ arrowHoverBackground: color });
+    };
+
     return (
         <Fragment>
+            <InspectorControls group="color">
+                {arrows && (
+                    <>
+                        <ColorGradientSettingsDropdown
+                            panelId={clientId}
+                            settings={[
+                                {
+                                    label: __('Arrow Color', 'cb'),
+                                    colorValue: arrowColor?.color || arrowColorAttr,
+                                    onColorChange: onArrowColorChange
+                                },
+                                {
+                                    label: __('Arrow Background', 'cb'),
+                                    colorValue: arrowBackground?.color || arrowBackgroundAttr,
+                                    onColorChange: onArrowBackgroundChange
+                                },
+                                {
+                                    label: __('Arrow Hover Color', 'cb'),
+                                    colorValue: arrowHoverColor?.color || arrowHoverColorAttr,
+                                    onColorChange: onArrowHoverColorChange
+                                },
+                                {
+                                    label: __('Arrow Hover Background', 'cb'),
+                                    colorValue: arrowHoverBackground?.color || arrowHoverBackgroundAttr,
+                                    onColorChange: onArrowHoverBackgroundChange
+                                }
+                            ]}
+                            {...colorGradientSettings}
+                        />
+                    </>
+                )}
+            </InspectorControls>
             <InspectorControls>
                 <PanelBody title={__('Carousel Settings', 'cb')} initialOpen={true}>
                     <RangeControl
@@ -162,4 +258,6 @@ export default function Edit({ attributes, setAttributes, clientId }) {
             </div>
         </Fragment>
     );
-}
+});
+
+export default Edit;
