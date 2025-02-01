@@ -1,4 +1,4 @@
-import { useBlockProps, InnerBlocks, InspectorControls, withColors } from '@wordpress/block-editor';
+import { useBlockProps, InnerBlocks, InspectorControls, withColors, ColorPalette } from '@wordpress/block-editor';
 import { PanelBody, RangeControl, ToggleControl, Button, Dropdown, ColorPicker } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 import { Fragment } from '@wordpress/element';
@@ -77,11 +77,22 @@ const Edit = compose(
                     </Button>
                 )}
                 renderContent={() => (
-                    <ColorPicker
-                        color={value}
-                        onChange={onChange}
-                        enableAlpha
-                    />
+                    <div className="components-color-picker__popover">
+                        <div className="components-color-picker__theme-colors">
+                            <ColorPalette
+                                colors={colors}
+                                value={value}
+                                onChange={onChange}
+                            />
+                        </div>
+                        <div className="components-color-picker__custom-picker">
+                            <ColorPicker
+                                color={value}
+                                onChange={onChange}
+                                enableAlpha
+                            />
+                        </div>
+                    </div>
                 )}
             />
         </div>
