@@ -1,15 +1,24 @@
-import { useBlockProps, InnerBlocks, InspectorControls } from '@wordpress/block-editor';
+import { useBlockProps, InnerBlocks, InspectorControls, withColors } from '@wordpress/block-editor';
 import { PanelBody, RangeControl, ToggleControl, ColorPalette } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 import { Fragment } from '@wordpress/element';
 import { useSelect } from '@wordpress/data';
 import classnames from 'classnames';
+import { compose } from '@wordpress/compose';
+import { withSelect } from '@wordpress/data';
 
 import './editor.scss';
 
 const ALLOWED_BLOCKS = ['cb/slide'];
 
-export default function Edit({ attributes, setAttributes, clientId }) {
+const Edit = compose(
+    withSelect((select) => {
+        const settings = select('core/block-editor').getSettings();
+        return {
+            colors: settings.colors || [],
+        };
+    })
+)(function({ attributes, setAttributes, clientId, colors }) {
     const {
         slidesToShow,
         slidesToScroll,
@@ -89,6 +98,7 @@ export default function Edit({ attributes, setAttributes, clientId }) {
                                     {__('Arrow Color', 'cb')}
                                 </label>
                                 <ColorPalette
+                                    colors={colors}
                                     value={arrowColor}
                                     onChange={(value) => setAttributes({ arrowColor: value })}
                                 />
@@ -98,6 +108,7 @@ export default function Edit({ attributes, setAttributes, clientId }) {
                                     {__('Arrow Background', 'cb')}
                                 </label>
                                 <ColorPalette
+                                    colors={colors}
                                     value={arrowBackground}
                                     onChange={(value) => setAttributes({ arrowBackground: value })}
                                 />
@@ -107,6 +118,7 @@ export default function Edit({ attributes, setAttributes, clientId }) {
                                     {__('Arrow Hover Color', 'cb')}
                                 </label>
                                 <ColorPalette
+                                    colors={colors}
                                     value={arrowHoverColor}
                                     onChange={(value) => setAttributes({ arrowHoverColor: value })}
                                 />
@@ -116,6 +128,7 @@ export default function Edit({ attributes, setAttributes, clientId }) {
                                     {__('Arrow Hover Background', 'cb')}
                                 </label>
                                 <ColorPalette
+                                    colors={colors}
                                     value={arrowHoverBackground}
                                     onChange={(value) => setAttributes({ arrowHoverBackground: value })}
                                 />
@@ -206,4 +219,6 @@ export default function Edit({ attributes, setAttributes, clientId }) {
             </div>
         </Fragment>
     );
-}
+});
+
+export default Edit;
