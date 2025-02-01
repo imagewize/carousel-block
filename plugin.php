@@ -1,10 +1,11 @@
 <?php
 /**
- * Plugin Name: Carousel Slider Block
- * Plugin URI: https://wordpress.org/plugins/carousel-block
+ * Plugin Name: Creative Carousel Block
+ * Plugin URI: https://github.com/imagewize/carousel-block
  * Description: A responsive carousel slider block for Gutenberg. Add any blocks to slides.
- * Author URI: http://virgiliudiaconu.com/
+ * Author URI: https://imagewize.com
  * Version: 1.0.16
+ * Author: Imagewize
  * License: GPL2+
  * License URI: https://www.gnu.org/licenses/gpl-2.0.txt
  *
