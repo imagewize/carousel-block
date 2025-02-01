@@ -1,5 +1,5 @@
 import { useBlockProps, InnerBlocks, InspectorControls } from '@wordpress/block-editor';
-import { PanelBody, RangeControl, ToggleControl } from '@wordpress/components';
+import { PanelBody, RangeControl, ToggleControl, ColorPalette } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 import { Fragment } from '@wordpress/element';
 import { useSelect } from '@wordpress/data';
@@ -26,6 +26,10 @@ export default function Edit({ attributes, setAttributes, clientId }) {
         slides,
         scrollGroup,
         slidePadding,
+        arrowColor,
+        arrowBackground,
+        arrowHoverColor,
+        arrowHoverBackground,
     } = attributes;
 
     const slideCount = useSelect(
@@ -78,6 +82,46 @@ export default function Edit({ attributes, setAttributes, clientId }) {
                         checked={arrows}
                         onChange={(value) => setAttributes({ arrows: value })}
                     />
+                    {arrows && (
+                        <>
+                            <div className="components-base-control">
+                                <label className="components-base-control__label">
+                                    {__('Arrow Color', 'cb')}
+                                </label>
+                                <ColorPalette
+                                    value={arrowColor}
+                                    onChange={(value) => setAttributes({ arrowColor: value })}
+                                />
+                            </div>
+                            <div className="components-base-control">
+                                <label className="components-base-control__label">
+                                    {__('Arrow Background', 'cb')}
+                                </label>
+                                <ColorPalette
+                                    value={arrowBackground}
+                                    onChange={(value) => setAttributes({ arrowBackground: value })}
+                                />
+                            </div>
+                            <div className="components-base-control">
+                                <label className="components-base-control__label">
+                                    {__('Arrow Hover Color', 'cb')}
+                                </label>
+                                <ColorPalette
+                                    value={arrowHoverColor}
+                                    onChange={(value) => setAttributes({ arrowHoverColor: value })}
+                                />
+                            </div>
+                            <div className="components-base-control">
+                                <label className="components-base-control__label">
+                                    {__('Arrow Hover Background', 'cb')}
+                                </label>
+                                <ColorPalette
+                                    value={arrowHoverBackground}
+                                    onChange={(value) => setAttributes({ arrowHoverBackground: value })}
+                                />
+                            </div>
+                        </>
+                    )}
                     <ToggleControl
                         label={__('Show Dots', 'cb')}
                         checked={dots}

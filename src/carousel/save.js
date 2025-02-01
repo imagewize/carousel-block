@@ -16,7 +16,11 @@ export default function save({ attributes }) {
         responsiveSlides,
         responsiveSlidesToScroll,
         slidePadding,
-        scrollGroup
+        scrollGroup,
+        arrowColor,
+        arrowBackground,
+        arrowHoverColor,
+        arrowHoverBackground
     } = attributes;
 
     const slickSettings = {
@@ -45,6 +49,10 @@ export default function save({ attributes }) {
             { 'cb-padding': slidePadding }
         ),
         'data-slick': JSON.stringify(slickSettings),
+        'data-arrow-color': arrowColor,
+        'data-arrow-background': arrowBackground,
+        'data-arrow-hover-color': arrowHoverColor,
+        'data-arrow-hover-background': arrowHoverBackground,
         dir: rtl ? 'rtl' : undefined
     });
 
