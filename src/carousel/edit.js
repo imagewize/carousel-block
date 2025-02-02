@@ -62,7 +62,6 @@ const Edit = compose(
         responsiveSlides,
         responsiveSlidesToScroll,
         slides,
-        scrollGroup,
         slidePadding,
         arrowColor: arrowColorAttr,
         arrowBackground: arrowBackgroundAttr,
@@ -179,6 +178,16 @@ const Edit = compose(
                         checked={dots}
                         onChange={(value) => setAttributes({ dots: value })}
                     />
+                    {dots && (
+                        <RangeControl
+                            label={__('Dots Bottom Spacing', 'cb')}
+                            value={parseInt(attributes.dotsBottomSpacing)}
+                            onChange={(value) => setAttributes({ dotsBottomSpacing: `${value}px` })}
+                            min={-100}
+                            max={100}
+                            step={1}
+                        />
+                    )}
                     <ToggleControl
                         label={__('Infinite Loop', 'cb')}
                         checked={infinite}
@@ -210,11 +219,6 @@ const Edit = compose(
                         onChange={(value) => setAttributes({ slides: value })}
                         min={1}
                         max={20}
-                    />
-                    <ToggleControl
-                        label={__('Enable Scroll Group', 'cb')}
-                        checked={scrollGroup}
-                        onChange={(value) => setAttributes({ scrollGroup: value })}
                     />
                     <ToggleControl
                         label={__('Enable Slide Padding', 'cb')}

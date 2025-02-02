@@ -15,7 +15,9 @@
     }
 
     .slick-dots {
-        bottom: -25px;
+        position: absolute !important;
+        bottom: var(--dots-bottom) !important;
+        width: 100%;
 
         li {
             margin: 0 4px;

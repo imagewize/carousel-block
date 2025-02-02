@@ -59,10 +59,6 @@
       "type": "number",
       "default": 4
     },
-    "scrollGroup": {
-      "type": "boolean",
-      "default": false
-    },
     "slidePadding": {
       "type": "boolean",
       "default": true
@@ -82,6 +78,10 @@
     "arrowHoverBackground": {
       "type": "string",
       "default": "#ffffff"
+    },
+    "dotsBottomSpacing": {
+      "type": "string",
+      "default": "-35px"
     }
   },
   "supports": {
