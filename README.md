@@ -10,6 +10,9 @@ A responsive and customizable carousel slider block for the WordPress Gutenberg 
 - Responsive and touch-enabled
 - RTL support
 - Flexible layout options
+- Customizable navigation arrows
+- Adjustable dots navigation position
+- Theme color integration
 
 ## Settings
 
@@ -17,8 +20,14 @@ A responsive and customizable carousel slider block for the WordPress Gutenberg 
 - Slides to show (1-10)
 - Slides to scroll at a time (1-10)
 - Animation speed (100-3000ms)
-- Navigation arrows
-- Dot indicators
+- Navigation arrows with customizable:
+  - Arrow color
+  - Arrow background
+  - Hover states for both color and background
+  - Uses theme colors if available
+- Dot indicators with:
+  - Adjustable bottom spacing (-100px to 100px)
+  - Custom styling
 - Infinite loop
 - Autoplay with customizable speed
 - RTL support
