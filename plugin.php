@@ -46,7 +46,7 @@ class Carousel_Slider_Block {
 
     public static function load_textdomain() {
         load_plugin_textdomain(
-            'img-carousel-block',
+            'imagewize-blocks',
             false,
             dirname( plugin_basename( __FILE__ ) ) . '/languages'
         );
