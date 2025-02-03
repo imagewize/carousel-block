@@ -92,7 +92,7 @@
     "html": false,
     "anchor": true
   },
-  "textdomain": "img-carousel-block",
+  "textdomain": "imagewize-blocks",
   "editorScript": "file:./index.js",
   "editorStyle": "file:./index.css",
   "style": "file:./style-index.css"

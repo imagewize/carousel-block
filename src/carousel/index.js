@@ -28,7 +28,7 @@ const CarouselIcon = (
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-registration/
  */
-registerBlockType('cb/carousel', {
+registerBlockType('imagewize-blocks/carousel', {
     ...metadata,
     icon: CarouselIcon,
     edit,
