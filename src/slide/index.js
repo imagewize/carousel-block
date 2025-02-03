@@ -22,7 +22,7 @@ const SlideIcon = (
     </svg>
 );
 
-registerBlockType('img-cb/slide', {
+registerBlockType('cb/slide', {
     icon: SlideIcon,
     attributes: {
         slideId: {
