@@ -22,7 +22,7 @@ const SlideIcon = (
     </svg>
 );
 
-registerBlockType('imagewize-blocks/slide', {
+registerBlockType('img-cb/slide', {
     icon: SlideIcon,
     attributes: {
         slideId: {
@@ -44,12 +44,12 @@ registerBlockType('imagewize-blocks/slide', {
         return (
             <Fragment>
                 <InspectorControls>
-                    <PanelBody title={__('Slide Settings', 'imagewize-blocks')} initialOpen={true}>
+                    <PanelBody title={__('Slide Settings', 'img-cb')} initialOpen={true}>
                         <TextControl
-                            label={__('Slide ID', 'imagewize-blocks')}
+                            label={__('Slide ID', 'img-cb')}
                             value={slideId}
                             onChange={(value) => setAttributes({ slideId: value })}
-                            help={__('Optional HTML ID for this slide', 'imagewize-blocks')}
+                            help={__('Optional HTML ID for this slide', 'img-cb')}
                             __nextHasNoMarginBottom={true}
                         />
                     </PanelBody>
