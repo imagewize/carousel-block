@@ -22,7 +22,7 @@ const SlideIcon = (
     </svg>
 );
 
-registerBlockType('cb/slide', {
+registerBlockType('img-carousel-block/slide', {
     icon: SlideIcon,
     attributes: {
         slideId: {
@@ -44,12 +44,12 @@ registerBlockType('cb/slide', {
         return (
             <Fragment>
                 <InspectorControls>
-                    <PanelBody title={__('Slide Settings', 'cb')} initialOpen={true}>
+                    <PanelBody title={__('Slide Settings', 'img-carousel-block')} initialOpen={true}>
                         <TextControl
-                            label={__('Slide ID', 'cb')}
+                            label={__('Slide ID', 'img-carousel-block')}
                             value={slideId}
                             onChange={(value) => setAttributes({ slideId: value })}
-                            help={__('Optional HTML ID for this slide', 'cb')}
+                            help={__('Optional HTML ID for this slide', 'img-carousel-block')}
                             __nextHasNoMarginBottom={true}
                         />
                     </PanelBody>

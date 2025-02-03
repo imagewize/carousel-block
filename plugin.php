@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: Creative Carousel Block
+ * Plugin Name: Carousel Block
  * Plugin URI: https://github.com/imagewize/carousel-block
  * Description: A responsive carousel slider block for Gutenberg. Add any blocks to slides.
  * Author URI: https://imagewize.com
@@ -31,6 +31,7 @@ class Carousel_Slider_Block {
      */
     public static function register() {
         add_action( 'init', ['Carousel_Slider_Block', 'register_blocks'] );
+        add_action( 'init', ['Carousel_Slider_Block', 'load_textdomain'] );
     }
 
     /**
@@ -41,6 +42,14 @@ class Carousel_Slider_Block {
             'render_callback' => ['Carousel_Slider_Block', 'render_carousel']
         ]);
         register_block_type( CB_PLUGIN_DIR . '/build/slide' );
+    }
+
+    public static function load_textdomain() {
+        load_plugin_textdomain(
+            'img-carousel-block',
+            false,
+            dirname( plugin_basename( __FILE__ ) ) . '/languages'
+        );
     }
 
     /**
