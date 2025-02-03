@@ -1,0 +1,160 @@
+# Copyright (C) 2025 Imagewize
+# This file is distributed under the GPL2+.
+msgid ""
+msgstr ""
+"Project-Id-Version: IMG Carousel Block 1.0.16\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/carousel-block\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2025-02-03T03:37:30+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.11.0\n"
+"X-Domain: img-cb\n"
+
+#. Plugin Name of the plugin
+#: plugin.php
+msgid "IMG Carousel Block"
+msgstr ""
+
+#. Plugin URI of the plugin
+#: plugin.php
+msgid "https://github.com/imagewize/carousel-block"
+msgstr ""
+
+#. Description of the plugin
+#: plugin.php
+msgid "A responsive carousel slider block for Gutenberg. Add any blocks to slides."
+msgstr ""
+
+#. Author of the plugin
+#: plugin.php
+msgid "Imagewize"
+msgstr ""
+
+#. Author URI of the plugin
+#: plugin.php
+msgid "https://imagewize.com"
+msgstr ""
+
+#: src/carousel/edit.js:87
+msgid "Click plus (+) to add slides"
+msgstr ""
+
+#: src/carousel/edit.js:122
+msgid "Arrow Color"
+msgstr ""
+
+#: src/carousel/edit.js:127
+msgid "Arrow Background"
+msgstr ""
+
+#: src/carousel/edit.js:132
+msgid "Arrow Hover Color"
+msgstr ""
+
+#: src/carousel/edit.js:137
+msgid "Arrow Hover Background"
+msgstr ""
+
+#: src/carousel/edit.js:148
+msgid "Carousel Settings"
+msgstr ""
+
+#: src/carousel/edit.js:150
+msgid "Slides to Show"
+msgstr ""
+
+#: src/carousel/edit.js:157
+msgid "Slides to Scroll"
+msgstr ""
+
+#: src/carousel/edit.js:164
+msgid "Animation Speed (ms)"
+msgstr ""
+
+#: src/carousel/edit.js:172
+msgid "Show Arrows"
+msgstr ""
+
+#: src/carousel/edit.js:177
+msgid "Show Dots"
+msgstr ""
+
+#: src/carousel/edit.js:183
+msgid "Dots Bottom Spacing"
+msgstr ""
+
+#: src/carousel/edit.js:192
+msgid "Infinite Loop"
+msgstr ""
+
+#: src/carousel/edit.js:197
+msgid "Autoplay"
+msgstr ""
+
+#: src/carousel/edit.js:203
+msgid "Autoplay Speed (ms)"
+msgstr ""
+
+#: src/carousel/edit.js:212
+msgid "RTL Mode"
+msgstr ""
+
+#: src/carousel/edit.js:217
+msgid "Total Slides"
+msgstr ""
+
+#: src/carousel/edit.js:224
+msgid "Enable Slide Padding"
+msgstr ""
+
+#: src/carousel/edit.js:229
+msgid "Responsive Settings"
+msgstr ""
+
+#: src/carousel/edit.js:231
+msgid "Breakpoint Width (px)"
+msgstr ""
+
+#: src/carousel/edit.js:239
+msgid "Slides to Show (Mobile)"
+msgstr ""
+
+#: src/carousel/edit.js:246
+msgid "Slides to Scroll (Mobile)"
+msgstr ""
+
+#: src/slide/index.js:47
+msgid "Slide Settings"
+msgstr ""
+
+#: src/slide/index.js:49
+msgid "Slide ID"
+msgstr ""
+
+#: src/slide/index.js:52
+msgid "Optional HTML ID for this slide"
+msgstr ""
+
+#: src/carousel/block.json
+msgctxt "block title"
+msgid "Carousel"
+msgstr ""
+
+#: src/carousel/block.json
+msgctxt "block description"
+msgid "Create a customizable slideshow of content with this carousel block."
+msgstr ""
+
+#: src/slide/block.json
+msgctxt "block title"
+msgid "Slide"
+msgstr ""
+
+#: src/slide/block.json
+msgctxt "block description"
+msgid "A single slide container that can hold any content within the carousel."
+msgstr ""

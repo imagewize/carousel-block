@@ -44,12 +44,12 @@ registerBlockType('cb/slide', {
         return (
             <Fragment>
                 <InspectorControls>
-                    <PanelBody title={__('Slide Settings', 'cb')} initialOpen={true}>
+                    <PanelBody title={__('Slide Settings', 'img-cb')} initialOpen={true}>
                         <TextControl
-                            label={__('Slide ID', 'cb')}
+                            label={__('Slide ID', 'img-cb')}
                             value={slideId}
                             onChange={(value) => setAttributes({ slideId: value })}
-                            help={__('Optional HTML ID for this slide', 'cb')}
+                            help={__('Optional HTML ID for this slide', 'img-cb')}
                             __nextHasNoMarginBottom={true}
                         />
                     </PanelBody>
