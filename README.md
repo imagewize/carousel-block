@@ -39,6 +39,14 @@ A responsive and customizable carousel slider block for the WordPress Gutenberg 
 
 ## Installation
 
+### Via Composer
+
+```bash
+composer require imagewize/carousel-block
+```
+
+### Manual Installation
+
 1. Download or clone this repository
 2. Run `npm install` to install dependencies
 3. Run `npm run build` to build the block
@@ -75,7 +83,7 @@ These features might change or be removed in future WordPress versions, which co
 ## Requirements
 
 - WordPress 6.1+
-- PHP 7.0+
+- PHP 8.0+
 - Node.js for development
 
 ## Usage
