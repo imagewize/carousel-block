@@ -1,0 +1,28 @@
+{
+    "name": "imagewize/carousel-block",
+    "description": "A responsive carousel slider block for WordPress Gutenberg editor",
+    "type": "wordpress-plugin",
+    "license": "GPL-2.0-or-later",
+    "keywords": [
+        "wordpress",
+        "plugin",
+        "block-editor",
+        "gutenberg",
+        "carousel",
+        "slider",
+        "slideshow"
+    ],
+    "support": {
+        "issues": "https://github.com/imagewize/carousel-block/issues",
+        "source": "https://github.com/imagewize/carousel-block"
+    },
+    "require": {
+        "php": ">=8.0",
+        "composer/installers": "^2.0"
+    },
+    "config": {
+        "allow-plugins": {
+            "composer/installers": true
+        }
+    }
+}
