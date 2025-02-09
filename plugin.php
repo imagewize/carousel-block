@@ -69,13 +69,6 @@ class Carousel_Slider_Block {
                 self::VERSION,
                 false
             );
-            wp_enqueue_style(
-                'carousel-block-style',
-                plugins_url( '/build/carousel/style-index.css', __FILE__ ),
-                [],
-                self::VERSION,
-                false
-            );
             wp_enqueue_script(
                 'carousel-block-slick-script',
                 plugins_url( '/vendor/slick/slick.min.js', __FILE__ ),
