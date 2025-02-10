@@ -3,6 +3,13 @@
     "description": "A responsive carousel slider block for WordPress Gutenberg editor",
     "type": "wordpress-plugin",
     "license": "GPL-2.0-or-later",
+    "authors": [
+        {
+            "name": "Jasper Frumau",
+            "email": "jasper@imagewize.com",
+            "homepage": "https://imagewize.com"
+        }
+    ],
     "keywords": [
         "wordpress",
         "plugin",
