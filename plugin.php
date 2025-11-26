@@ -4,7 +4,7 @@
  * Plugin URI: https://github.com/imagewize/carousel-block
  * Description: A responsive carousel slider block for Gutenberg. Add any blocks to slides.
  * Author URI: https://imagewize.com
- * Version: 1.0.16
+ * Version: 1.0.17
  * Author: Imagewize
  * Text Domain: img-cb
  * License: GPL2+
@@ -25,7 +25,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 define( 'CB_PLUGIN_DIR', untrailingslashit( plugin_dir_path( __FILE__ ) ) );
 
 class Carousel_Slider_Block {
-    const VERSION = '1.0.16'; // Plugin version
+    const VERSION = '1.0.17'; // Plugin version
 
     /**
      * Actions and filters.

@@ -118,8 +118,22 @@ The editor uses `useSelect` to count inner blocks dynamically, which affects scr
 
 ## Version Updates
 
-When bumping version:
-1. Update `Carousel_Slider_Block::VERSION` in plugin.php
-2. Update version in plugin.php header comment
-3. Build assets with `npm run build`
-4. Commit the built files (build/ is tracked in git)
+When bumping the plugin version, update ALL of the following locations:
+
+1. **plugin.php** (2 locations):
+   - Line 7: `Version:` in the plugin header comment
+   - Line 28: `const VERSION` in the Carousel_Slider_Block class
+
+2. **package.json**:
+   - Line 3: `"version"` field
+
+3. **src/carousel/block.json**:
+   - Line 5: `"version"` field
+
+4. **src/slide/block.json**:
+   - Line 5: `"version"` field
+
+5. **Build and commit**:
+   - Run `npm run build` to compile assets
+   - The built files in `build/` directory are tracked in git and must be committed
+   - Update CHANGELOG.md with the new version and changes
