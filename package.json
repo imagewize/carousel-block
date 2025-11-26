@@ -1,6 +1,6 @@
 {
   "name": "carousel-block",
-  "version": "1.0.0",
+  "version": "1.0.17",
   "description": "A WordPress carousel block",
   "main": "build/index.js",
   "scripts": {
