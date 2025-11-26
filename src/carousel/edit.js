@@ -63,6 +63,7 @@ const Edit = compose(
         responsiveSlidesToScroll,
         slides,
         slidePadding,
+        adaptiveHeight,
         arrowColor: arrowColorAttr,
         arrowBackground: arrowBackgroundAttr,
         arrowHoverColor: arrowHoverColorAttr,
@@ -224,6 +225,12 @@ const Edit = compose(
                         label={__('Enable Slide Padding', 'img-cb')}
                         checked={slidePadding}
                         onChange={(value) => setAttributes({ slidePadding: value })}
+                    />
+                    <ToggleControl
+                        label={__('Adaptive Height', 'img-cb')}
+                        help={__('Adjust carousel height to match the current slide height', 'img-cb')}
+                        checked={adaptiveHeight}
+                        onChange={(value) => setAttributes({ adaptiveHeight: value })}
                     />
                 </PanelBody>
                 <PanelBody title={__('Responsive Settings', 'img-cb')} initialOpen={false}>
